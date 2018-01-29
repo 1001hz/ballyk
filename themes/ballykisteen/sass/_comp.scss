@@ -1,0 +1,114 @@
+.comp {
+
+  z-index: 2;
+  position: relative;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__team-item {
+    margin: 0;
+    border-bottom: solid 1px transparent;
+    
+
+  }
+
+  &__team-heading, &__team-details {
+    @include clearfix();
+  }
+
+  &__team-heading {
+    cursor: pointer;
+    &.open {
+      background-color: #CCC;
+      
+
+      .comp__open {
+        transition: transform $base-duration ease-in-out;
+        transform: rotate(180deg);  
+      }
+    }
+  }
+
+  &__team-details {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height $base-duration ease-in-out;
+    background-color: #EEE;
+    &.open {
+      max-height: 300px;
+      transition: max-height $base-duration ease-in-out;
+      
+    }
+  }
+
+  &__wk {
+    opacity: 0.3;
+    font-weight: 300;
+  }
+
+  &__open {
+    position: absolute;
+    right: 0;
+    padding: 12px $base-padding;
+    color: $white;
+    transform: rotate(0deg);  
+      transition: transform $base-duration ease-in-out;
+  }
+
+  &__title {
+    color: $white;
+    background-color: $brand-red;
+    padding: $base-padding;
+  }
+
+  &__team-name, &__team-score {
+    float: left;
+    font-weight: bold;
+    padding: 12px $base-padding;
+  }
+
+  &__team-name{
+    width: 60%;
+    background-color: $white;
+  }
+  &__team-score {
+    width: 40%;
+    background-color: $brand-secondary;
+        color: $white;
+  }
+
+  &__team-list, &__team-score-list {
+    
+    float: left;
+    padding: 12px $base-padding;
+  }
+
+  &__team-score-list {
+    width: 40%;
+    background-color: lighten($brand-secondary, 20%);
+    color: $white;
+  }
+
+  &__team-list {
+    width: 60%;
+     li {
+       position: relative;
+       margin-bottom: 6px;
+     }
+  }
+
+  &__player-icon {
+    position: absolute;
+    left: 0;
+  }
+
+  &__player-name {
+    margin-left: 20px;
+    display: inline-block;
+  }
+
+}

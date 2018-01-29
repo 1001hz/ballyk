@@ -1,0 +1,92 @@
+.footer {
+  
+
+  background: $black;
+  color: $white;
+  font-weight: 200;
+  padding: $base-padding-lg $base-padding;
+  z-index:1;
+
+  a {
+    text-decoration: none;
+  }
+
+  &__address {
+    line-height: 1.3em;
+    a {
+      color: $white;
+    }
+  }
+
+  &__social{
+    padding-top: $base-padding;
+  }
+
+  &__title {
+    color: $grey;
+    font-weight: normal;
+  }
+
+  &__social-icon {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    font-size: 2.4em;
+    background-color: white;
+    color: black;
+    border-radius: 30px;
+    text-align: center;
+    padding: 7px;
+    opacity: 0.1;
+
+    &--alt {
+      opacity: 1;
+      color: white;
+      background-color: black;
+      border: solid 2px white;
+    }
+  }
+
+  &__phone {
+    font-size: 2em;
+    a {
+      color: $white;
+    }
+  }
+
+  &__social-text {
+    color: $white;
+  }
+
+  &__email {
+    margin-top: $base-padding;
+    a {
+      color: $white;
+    }
+  }
+
+  &__label {
+    font-size: 1em;
+    color: $grey;
+    font-weight: normal;
+    margin-top: $base-padding * 2;
+  }
+}
+
+@include media($desktop) {
+  .footer {
+    &__inner {
+      max-width: $tablet-size;
+      margin: 0 auto;
+      @include clearfix();
+    }
+
+    &__section {
+      @include span-columns(6);
+
+      &:first-of-type {
+        margin-top: $base-padding;
+      }
+    }
+  }
+}
