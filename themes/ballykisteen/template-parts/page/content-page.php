@@ -13,11 +13,11 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-		<?php twentyseventeen_edit_link( get_the_ID() ); ?>
-	</header><!-- .entry-header -->
-	<div class="entry-content">
+
+	<?php get_template_part( 'template-parts/header/header', get_post_format() ); ?>
+
+	<div class="section">
+		<div class="section__inner">
 		<?php
 			the_content();
 
@@ -26,5 +26,6 @@
 				'after'  => '</div>',
 			) );
 		?>
+		</div>
 	</div><!-- .entry-content -->
 </article><!-- #post-## -->

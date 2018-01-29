@@ -10,4 +10,13 @@
 @import 'banner';
 @import 'footer';
 @import 'notice';
+@import 'fixture';
+@import 'captain';
 @import 'comp';
+
+body {
+
+  &.menu-open {
+    overflow: hidden;
+  }
+}

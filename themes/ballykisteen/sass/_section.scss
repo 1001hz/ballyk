@@ -1,5 +1,6 @@
 .section {
   padding: $base-padding-lg $base-padding;
+  overflow-x: scroll;
 
   &__sub-heading {
     font-size: 1em;
@@ -50,6 +51,75 @@
     opacity: 0.2;
   }
 
+
+  &__header {
+    position: relative;
+  }
+
+  &__header-title {
+    font-family: $font-heading;
+    font-size: 3em;
+    color: $white;
+  }
+
+  &__header-image {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    position: relative;
+
+    &:after {
+      content: '';
+      background-color: $brand-green;
+      opacity: 0;
+      position: absolute;
+      left:0;
+      right:0;
+      top:0;
+      bottom:0;
+      animation: section_entering;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes section_entering {
+      from {opacity: 0}
+      to {opacity: 0.8}
+    }
+  }
+
+  &__header-heading {
+    color: $white;
+    animation: header-title;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+
+    border-top: solid 2px white;
+    display: inline-block;
+    padding-top: 12px;
+  }
+
+  @keyframes header-title {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  &__header-content {
+    @include valign();
+    position: absolute;
+    padding: $base-padding;
+  }
+
   &--highlight {
     position: relative;
     background-color: $brand-green;
@@ -58,6 +128,12 @@
 
 @include media($desktop) {
   .section {
+    &__header-content {
+      width: 720px;
+      padding-left: 0;
+      left: calc(50% - (#{$tablet-size}/2));
+    }
+
     &__inner {
       max-width: $tablet-size;
       margin: 0 auto;

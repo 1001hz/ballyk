@@ -27,11 +27,17 @@
 	<header>
 
 		<div class="nav">
-			<div class="nav__hamburger">
-				<span></span>
-				<span></span>
-				<span></span>
-				<span></span>
+			<div class="nav__logo">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.gif" alt="ballykisteen logo" />
+			</div>
+
+			<div class="nav__hamburger-wrapper">
+				<div class="nav__hamburger">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
 			</div>
 
 			<nav class="nav__items">

@@ -1,0 +1,31 @@
+.captain {
+
+  &__image-wrapper {
+    img {
+      width: 100%;
+    }
+    @include clearfix();
+  }
+
+  &__text-wrapper {
+
+  }
+
+  &__image-text {
+    font-size: 0.8em;
+    float: right;
+  }
+}
+
+@include media($desktop) {
+  .captain {
+    &__image-wrapper {
+      @include span-columns(4);
+      margin-top: $base-padding;
+    }
+  
+    &__text-wrapper {
+      @include span-columns(8);
+    }
+  }
+}

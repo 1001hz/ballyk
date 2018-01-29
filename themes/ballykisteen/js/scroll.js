@@ -13,6 +13,8 @@
     return elementBottom > viewportTop && elementTop < viewportBottom;
     };
 
+    var nav = $('.nav');
+
   $(document).ready(function(){
 
       $(window).scroll(function() {
@@ -31,7 +33,15 @@
           if($(this).isInViewport()) {
             $(this).delay(400).addClass('visible');
           }
-        })
+        });
+
+        var eightyPer = ($(window).height() / 100) * 80;
+        if((eightyPer - 80) - $(window).scrollTop() < 0){
+          nav.addClass('nav--background');
+        }
+        else {
+          nav.removeClass('nav--background');
+        }
         
 
       });

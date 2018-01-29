@@ -16,7 +16,7 @@ get_header(); ?>
 
 <div class="banner">
 	<?php if ( has_post_thumbnail() ) :
-		$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'twentyseventeen-featured-image' );
+		$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
 	?>
 	<div class="banner__image" style="background-image: url(<?php echo esc_url( $thumbnail[0] ); ?>);">
 		
@@ -60,13 +60,13 @@ get_header(); ?>
 		<div class="section__sub-heading">Notices</div>
 
 		<article class="notice">
-			<div class="notice__title">Spring League 2018</div>
+			<h2 class="notice__title">Spring League 2018</h2>
 			<div class="notice__date">20 January 2018</div>
 			<p class="notice__content">The 2018 Golf season is ready to start with the commencement of the D.O.E. David Kavanagh sponsored Spring League. This competition is a 4 man team event. This Spring League is set to run over 5 qualifying weeks for a Final on March 25th. The top 3 scores per team to count as part of their total. Entry fee is 10 euro per person. This is a great opportunity to prepare yourself for the coming season. Please get your teams entered in the Pro Shop as quickly as possible. See Rules Here</p>
 		</article>
 
 		<article class="notice">
-			<div class="notice__title">AGM for 2017</div>
+			<h2 class="notice__title">AGM for 2017</h2>
 			<div class="notice__date">10 December 2018</div>
 			<p class="notice__content">The 2018 Golf season is ready to start with the commencement of the D.O.E. David Kavanagh sponsored Spring League. This competition is a 4 man team event. This Spring League is set to run over 5 qualifying weeks for a Final on March 25th. The top 3 scores per team to count as part of their total. Entry fee is 10 euro per person. This is a great opportunity to prepare yourself for the coming season. Please get your teams entered in the Pro Shop as quickly as possible. See Rules Here</p>
 		</article>

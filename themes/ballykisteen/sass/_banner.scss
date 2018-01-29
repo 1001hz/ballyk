@@ -29,7 +29,7 @@
     @keyframes entering {
       from {opacity: 0.2}
       to {opacity: 1}
-  }
+    }
   }
 
   &__logo {
@@ -46,5 +46,7 @@
   &__content {
     @include valign();
     position: absolute;
+    max-width: 400px;
+    left: calc(50% - 200px);
   }
 }
