@@ -1,6 +1,6 @@
 .section {
   padding: $base-padding-lg $base-padding;
-  overflow-x: scroll;
+  //overflow-x: scroll;
 
   &__sub-heading {
     font-size: 1em;
@@ -97,6 +97,7 @@
     animation: header-title;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    font-weight: normal;
 
     border-top: solid 2px white;
     display: inline-block;

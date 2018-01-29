@@ -59,17 +59,22 @@ get_header(); ?>
 	<div  class="section__inner">
 		<div class="section__sub-heading">Notices</div>
 
-		<article class="notice">
-			<h2 class="notice__title">Spring League 2018</h2>
-			<div class="notice__date">20 January 2018</div>
-			<p class="notice__content">The 2018 Golf season is ready to start with the commencement of the D.O.E. David Kavanagh sponsored Spring League. This competition is a 4 man team event. This Spring League is set to run over 5 qualifying weeks for a Final on March 25th. The top 3 scores per team to count as part of their total. Entry fee is 10 euro per person. This is a great opportunity to prepare yourself for the coming season. Please get your teams entered in the Pro Shop as quickly as possible. See Rules Here</p>
+		<?php
+				$args = array('post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => -1, 'orderby' => 'menu_order');
+        $posts = get_posts($args);
+
+        foreach($posts as $post) :
+            
+        ?>
+<article class="notice">
+			<h2 class="notice__title"><?php echo $post->post_title; ?></h2>
+			<div class="notice__date"><?php echo date('F j, Y', strtotime($post->post_date)); ?></div>
+			<p class="notice__content"><?php echo apply_filters( 'the_content', $post->post_content ); ?></p>
 		</article>
 
-		<article class="notice">
-			<h2 class="notice__title">AGM for 2017</h2>
-			<div class="notice__date">10 December 2018</div>
-			<p class="notice__content">The 2018 Golf season is ready to start with the commencement of the D.O.E. David Kavanagh sponsored Spring League. This competition is a 4 man team event. This Spring League is set to run over 5 qualifying weeks for a Final on March 25th. The top 3 scores per team to count as part of their total. Entry fee is 10 euro per person. This is a great opportunity to prepare yourself for the coming season. Please get your teams entered in the Pro Shop as quickly as possible. See Rules Here</p>
-		</article>
+
+		<?php endforeach; ?>
+
 	</div>
 </div>
 
