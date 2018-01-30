@@ -24,7 +24,7 @@ get_header(); ?>
 
 	<div class="banner__content">
 
-		<img class="banner__logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.gif" alt="Ballykisteen Golf Club Logo" />
+		<img class="banner__logo" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="Ballykisteen Golf Club Logo" />
 		
 		<div class="banner__title">
 			Ballykisteen Golf Club
@@ -225,6 +225,9 @@ get_header(); ?>
 
 			</ul>
 		</div>
+
+		<?php get_sidebar(); ?>
+			
 	</div>
 </div>
 

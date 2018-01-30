@@ -560,3 +560,145 @@ require get_parent_theme_file_path( '/inc/icon-functions.php' );
 
 
 
+// WIDGETS //
+// Register and load the widget
+function wpb_load_widget() {
+	register_widget( 'bk_golfer_of_the_year' );
+}
+add_action( 'widgets_init', 'wpb_load_widget' );
+
+// Creating the widget 
+class bk_golfer_of_the_year extends WP_Widget {
+
+function __construct() {
+parent::__construct(
+
+// Base ID of your widget
+'bk_golfer_of_the_year', 
+
+// Widget name will appear in UI
+__('Golfer Of The Year Widget', 'bk_golfer_of_the_year_domain'), 
+
+// Widget description
+array( 'description' => __( 'Displays the leaderboard of points won', 'bk_golfer_of_the_year_domain' ), ) 
+);
+}
+
+// Creating widget front-end
+
+public function widget( $args, $instance ) {
+$title = apply_filters( 'widget_title', $instance['title'] );
+
+// before and after widget arguments are defined by themes
+echo $args['before_widget'];
+if ( ! empty( $title ) )
+//echo $args['before_title'] . $title . $args['after_title'];
+
+// This is where you run the code and display the output
+//echo __( 'Hello, World!', 'bk_golfer_of_the_year_domain' );
+
+echo '<div class="comp"><div class="comp__title">'.$title.'</div>';
+
+$args = array('post_type' => 'bk_medals', 'post_status' => 'publish', 'posts_per_page' => -1, 'orderby' => 'menu_order');
+$medals = get_posts($args);
+$table = array();
+
+function addToTable($table, $player, $points, $compName){
+	if(isset($player)){
+		$key = strtolower(str_replace(' ', '', str_replace("'", '', $player)));
+		if(!isset($table[$key])){
+			$table[$key] = array(
+				"name"=>$player,
+				"comps"=> array(
+					array(
+						"name"=> $compName,
+						"points"=> $points
+					)
+				),
+				"total"=> (int)$points
+			);
+		}
+		else{
+			array_push($table[$key]["comps"], array(
+				"name"=> $compName,
+				"points"=> $points
+			));
+			$table[$key]["total"] = (int)$table[$key]["total"] + (int)$points;
+		}
+	}
+	return $table;
+}
+
+function printTable($table) {
+	
+	foreach($table as $player) {
+		echo '<div class="comp__player accordion"><div class="comp__player-names">' . $player["name"] . '</div><div class="comp__player-total">' . $player["total"] . '<i class="fa fa-angle-down" aria-hidden="true"></i></div></div>';
+		echo '<div class="comp__breakdown">';
+		foreach($player["comps"] as $comp) {
+			echo '<div><div class="comp__breakdown-name">' . $comp["name"] . '</div><div class="comp__breakdown-points">' . $comp["points"] . '</div></div>';
+		}
+		echo '</div>';
+	}
+}
+
+foreach($medals as $post) {
+		$arrMedalsMeta = get_post_custom( $post->ID );
+		$compName = $post->post_title;
+
+		$first = $arrMedalsMeta['bk_medals_first'][0];
+		$second = $arrMedalsMeta['bk_medals_second'][0];
+		$third = $arrMedalsMeta['bk_medals_third'][0];
+		$fourth = $arrMedalsMeta['bk_medals_fourth'][0];
+		$fifth = $arrMedalsMeta['bk_medals_fifth'][0];
+		$sixth = $arrMedalsMeta['bk_medals_sixth'][0];
+
+		$pfirst = $arrMedalsMeta['bk_medals_pfirst'][0];
+		$psecond = $arrMedalsMeta['bk_medals_psecond'][0];
+		$pthird = $arrMedalsMeta['bk_medals_pthird'][0];
+		$pfourth = $arrMedalsMeta['bk_medals_pfourth'][0];
+		$pfifth = $arrMedalsMeta['bk_medals_pfifth'][0];
+		$psixth = $arrMedalsMeta['bk_medals_psixth'][0];
+
+		$table = addToTable($table, $first, $pfirst, $compName);
+		$table = addToTable($table, $second, $psecond, $compName);
+		$table = addToTable($table, $third, $pthird, $compName);
+		$table = addToTable($table, $fourth, $pfourth, $compName);
+		$table = addToTable($table, $fifth, $pfifth, $compName);
+		$table = addToTable($table, $sixth, $psixth, $compName);
+}
+
+usort($table, function($a, $b)
+{
+    return $a["total"] < $b["total"];
+});
+
+printTable($table);
+echo '</div></div>';
+
+echo $args['after_widget'];
+}
+			 
+// Widget Backend 
+public function form( $instance ) {
+if ( isset( $instance[ 'title' ] ) ) {
+$title = $instance[ 'title' ];
+}
+else {
+$title = __( 'New title', 'bk_golfer_of_the_year_domain' );
+}
+// Widget admin form
+?>
+<p>
+<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+</p>
+<?php 
+}
+	 
+// Updating widget replacing old instances with new
+public function update( $new_instance, $old_instance ) {
+$instance = array();
+$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+return $instance;
+}
+} // Class bk_golfer_of_the_year ends here

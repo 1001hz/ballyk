@@ -133,14 +133,17 @@ p {
   transition: background-color 0.3s ease-in-out; }
   .nav__logo {
     float: left;
-    margin-left: 12px; }
+    margin-left: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out; }
     .nav__logo img {
-      width: 60px; }
+      width: 50px; }
   .nav__hamburger-wrapper {
     border: solid 1px #CCC;
     margin: 10px;
     float: right;
-    border-radius: 2px; }
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2); }
   .nav__items {
     overflow-y: scroll;
     z-index: 100;
@@ -183,7 +186,6 @@ p {
             top: 0;
             right: 24px; }
         .nav__items ul li.open ul {
-          margin: 12px 0;
           max-height: 300px;
           transition: max-height 0.3s ease-in; }
         .nav__items ul li.open:after {
@@ -258,6 +260,9 @@ p {
   .nav--background {
     background-color: #03674F;
     transition: background-color 0.3s ease-in-out; }
+    .nav--background .nav__logo {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out; }
 
 @media screen and (min-width: 720px) {
   .nav {
@@ -269,14 +274,18 @@ p {
 .banner {
   text-align: center;
   position: relative;
-  background-color: #03674F; }
+  background-color: #03674F;
+  overflow: hidden; }
   .banner__image {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
-    height: 100vh; }
+    height: 100vh;
+    animation: zoom;
+    animation-duration: 5s;
+    animation-fill-mode: forwards; }
     .banner__image.leaving {
       animation: leaving;
       animation-duration: 1s;
@@ -285,6 +294,12 @@ p {
       animation: entering;
       animation-duration: 1s;
       animation-fill-mode: forwards; }
+
+@keyframes zoom {
+  from {
+    transform: scale(1.1); }
+  to {
+    transform: scale(1); } }
 
 @keyframes leaving {
   from {
@@ -298,7 +313,7 @@ p {
   to {
     opacity: 1; } }
   .banner__logo {
-    width: 160px; }
+    width: 100px; }
   .banner__title {
     font-family: "Lora", serif;
     font-size: 3em;
@@ -479,26 +494,126 @@ p {
     margin-bottom: 6px;
     color: #03674F;
     margin-top: 0; }
+  .medals__sponsor-heading {
+    color: #999;
+    font-size: 0.8em; }
   .medals__winners {
     margin: 24px 0;
     padding: 0;
-    list-style: none; }
-  .medals__winner--first {
-    color: gold; }
-  .medals__winner--second {
-    color: silver; }
-  .medals__winner--third {
-    color: brown; }
-  .medals__winner--fourth {
-    color: grey; }
+    list-style: none;
+    padding-top: 24px;
+    border-top: solid 1px #ddd; }
+  .medals__winner {
+    margin-bottom: 24px; }
+    .medals__winner::after {
+      clear: both;
+      content: "";
+      display: block; }
+  .medals__medal-wrapper {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%; }
+    .medals__medal-wrapper:last-child {
+      margin-right: 0; }
+  .medals__winner-details {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 74.41059%; }
+    .medals__winner-details:last-child {
+      margin-right: 0; }
+  .medals__winner-position {
+    color: #999;
+    font-size: 0.8em; }
+  .medals__medal {
+    font-size: 2em;
+    padding: 5px;
+    border-radius: 30px;
+    border: solid 2px #000000;
+    color: black; }
+    .medals__medal--first {
+      background-color: gold;
+      color: #ccac00;
+      border-color: #ccac00; }
+    .medals__medal--second {
+      background-color: silver;
+      color: #a7a7a7;
+      border-color: #a7a7a7; }
+    .medals__medal--third {
+      background-color: brown;
+      color: #7c2020;
+      border-color: #7c2020; }
 
 .comp {
   z-index: 2;
-  position: relative; }
+  position: relative;
+  margin-bottom: 24px; }
   .comp ul {
     padding: 0;
     margin: 0;
     list-style: none; }
+  .comp__player {
+    background-color: #ffffff;
+    cursor: pointer;
+    border-bottom: solid 1px #aaaaaa; }
+    .comp__player::after {
+      clear: both;
+      content: "";
+      display: block; }
+    .comp__player.open .fa {
+      transform: rotate(180deg);
+      transition: transform 0.3s ease-in-out; }
+  .comp__player-names {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%;
+    padding: 12px 24px;
+    border-right: 1px solid #aaaaaa; }
+    .comp__player-names:last-child {
+      margin-right: 0; }
+  .comp__player-total {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    padding: 12px 24px; }
+    .comp__player-total:last-child {
+      margin-right: 0; }
+    .comp__player-total .fa {
+      float: right;
+      transform: rotate(0deg);
+      transition: transform 0.3s ease-in-out; }
+  .comp__breakdown {
+    background-color: #ddd;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out; }
+    .comp__breakdown::after {
+      clear: both;
+      content: "";
+      display: block; }
+    .comp__breakdown.open {
+      max-height: 300px;
+      transition: max-height 0.3s ease-out; }
+  .comp__breakdown-name {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%;
+    padding: 12px 24px;
+    border-right: 1px solid #aaaaaa; }
+    .comp__breakdown-name:last-child {
+      margin-right: 0; }
+  .comp__breakdown-points {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    padding: 12px 24px; }
+    .comp__breakdown-points:last-child {
+      margin-right: 0; }
   .comp__team-item {
     margin: 0;
     border-bottom: solid 1px transparent; }

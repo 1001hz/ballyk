@@ -11,8 +11,10 @@
   &__logo {
     float: left;
     margin-left: 12px;
+    opacity: 0;
+    transition: opacity $base-duration ease-in-out;
     img {
-      width: 60px;
+      width: 50px;
     }
   }
 
@@ -21,6 +23,7 @@
     margin: 10px;
     float: right;
     border-radius: 2px;
+    background-color: rgba(0,0,0,0.2);
   }
 
   &__items {
@@ -77,7 +80,7 @@
 
         &.open {
           ul {
-            margin: $base-padding/2 0;
+            //margin: $base-padding/2 0;
             max-height: 300px;
             transition: max-height $base-duration ease-in;
           }
@@ -188,6 +191,11 @@
   &--background {
     background-color: $brand-green;
     transition: background-color $base-duration ease-in-out;
+
+    .nav__logo {
+      opacity: 1;
+      transition: opacity $base-duration ease-in-out;
+    }
   }
 }
 

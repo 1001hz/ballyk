@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Template Name: Medals
+ * Template Name: Other Competitions
  *
  */
 
@@ -27,7 +27,7 @@ get_template_part( 'template-parts/header/header', get_post_format() );
 
         foreach($medals as $post) :
             $arrMedalsMeta = get_post_custom( $post->ID );
-            if($arrMedalsMeta['bk_medals_type'][0] === 'monthly_medal') {
+            if($arrMedalsMeta['bk_medals_type'][0] === 'other') {
               $sponsor = $arrMedalsMeta['bk_medals_sponsor'][0];
               $first = $arrMedalsMeta['bk_medals_first'][0];
               $second = $arrMedalsMeta['bk_medals_second'][0];
@@ -35,11 +35,13 @@ get_template_part( 'template-parts/header/header', get_post_format() );
               $fourth = $arrMedalsMeta['bk_medals_fourth'][0];
               $fifth = $arrMedalsMeta['bk_medals_fifth'][0];
               $sixth = $arrMedalsMeta['bk_medals_sixth'][0];
+
+              $title = $arrMedalsMeta['bk_medals_type_other'][0];
             }
             else {
               continue;
             }
-
+            
         ?>
 
 

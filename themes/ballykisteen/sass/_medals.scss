@@ -20,24 +20,66 @@
     margin-top: 0;
   }
 
+  &__sponsor-heading {
+    color: $grey;
+    font-size: 0.8em;
+  }
+
+  &__sponsor-name {
+
+  }
+
   &__winners {
     margin: $base-padding 0;
     padding: 0;
     list-style: none;
+    padding-top: $base-padding;
+    border-top: solid 1px #ddd;
   }
 
   &__winner {
+    @include clearfix();
+    margin-bottom: $base-padding;
+  }
+
+  &__medal-wrapper {
+    @include span-columns(3);
+  }
+
+  &__winner-details {
+    @include span-columns(9);
+  }
+
+  &__winner-position {
+    color: $grey;
+    font-size: 0.8em;
+  }
+
+  &__winner-name {
+
+  }
+  &__medal {
+    
+    font-size: 2em;
+    padding: 5px;
+    border-radius: 30px;
+    border: solid 2px $black;
+    color: black;
+
     &--first {
-      color: gold;
+      background-color: gold;
+      color: darken(gold, 10%);
+      border-color: darken(gold, 10%);
     }
     &--second {
-      color:silver;
+      background-color:silver;
+      color: darken(silver, 10%);
+      border-color: darken(silver, 10%);
     }
     &--third {
-      color: brown;
-    }
-    &--fourth {
-      color: grey;
+      background-color: brown;
+      color: darken(brown, 10%);
+      border-color: darken(brown, 10%);
     }
   }
 

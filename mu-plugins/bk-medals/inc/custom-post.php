@@ -3,14 +3,14 @@
 add_action( 'init', 'bk_medals' );
 function bk_medals() {
     $labels = array(
-        'name' => _x('Medals', 'post type general name'),
-        'singular_name' => _x('Medal', 'post type singular name'),
-        'add_new' => _x('Add a monthly medal', 'page'),
-        'add_new_item' => __('Add a monthly medal'),
+        'name' => _x('Competitions', 'post type general name'),
+        'singular_name' => _x('Competitions', 'post type singular name'),
+        'add_new' => _x('Add a competition', 'page'),
+        'add_new_item' => __('Add a competition'),
         'edit_item' => __('Edit'),
-        'new_item' => __('New monthly medals'),
-        'view_item' => __('View monthly medals'),
-        'search_items' => __('Search medals'),
+        'new_item' => __('New competition'),
+        'view_item' => __('View competitions'),
+        'search_items' => __('Search competitions'),
         'not_found' =>  __('Nothing found'),
         'not_found_in_trash' => __('Nothing found in Trash'),
         'parent_item_colon' => ''

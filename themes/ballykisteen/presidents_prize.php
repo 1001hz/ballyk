@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Template Name: Medals
+ * Template Name: President's Prize
  *
  */
 
@@ -27,7 +27,7 @@ get_template_part( 'template-parts/header/header', get_post_format() );
 
         foreach($medals as $post) :
             $arrMedalsMeta = get_post_custom( $post->ID );
-            if($arrMedalsMeta['bk_medals_type'][0] === 'monthly_medal') {
+            if($arrMedalsMeta['bk_medals_type'][0] === 'presidents') {
               $sponsor = $arrMedalsMeta['bk_medals_sponsor'][0];
               $first = $arrMedalsMeta['bk_medals_first'][0];
               $second = $arrMedalsMeta['bk_medals_second'][0];
@@ -39,7 +39,7 @@ get_template_part( 'template-parts/header/header', get_post_format() );
             else {
               continue;
             }
-
+            
         ?>
 
 

@@ -3,6 +3,7 @@
   text-align: center;
   position: relative;
   background-color: $brand-green;
+  overflow: hidden;
 
   &__image {
     background-attachment: fixed;
@@ -11,6 +12,10 @@
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    animation: zoom;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    
 
     &.leaving {
       animation: leaving;
@@ -21,6 +26,10 @@
       animation: entering;
       animation-duration: 1s;
       animation-fill-mode: forwards;
+    }
+    @keyframes zoom {
+      from {transform: scale(1.1)}
+      to {transform: scale(1)}
     }
     @keyframes leaving {
         from {opacity: 1}
@@ -33,7 +42,8 @@
   }
 
   &__logo {
-    width: 160px;
+    width: 100px;
+    
   }
 
   &__title {

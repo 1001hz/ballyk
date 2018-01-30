@@ -28,7 +28,7 @@
 
 		<div class="nav">
 			<div class="nav__logo">
-				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.gif" alt="ballykisteen logo" />
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="ballykisteen logo" />
 			</div>
 
 			<div class="nav__hamburger-wrapper">

@@ -8,15 +8,69 @@ function bk_medals_mb($meta_boxes) {
 
 	$meta_boxes[] = array(
 		'id'  => 'bk_medals_mb',
-        'title'  => 'hole',
+        'title'  => 'Competition',
 		'post_types' => 'bk_medals',
 		'priority'   => 'low',
 		'fields' => array(
 			array(
+				'name'    => 'Type',
+				'id'      => 'bk_medals_type',
+				'type'    => 'radio',
+				// Array of 'value' => 'Label' pairs for radio options.
+				// Note: the 'value' is stored in meta field, not the 'Label'
+				'options' => array(
+					'monthly_medal' => 'Monthly Medal',
+					'captains' => "Captain's Prize",
+					'vcaptains' => "Vice Captain's Prize",
+					'presidents' => "President's Prize",
+					'singles' => "Single's Matchplay",
+					'other' => "Other"
+				),
+				// Show choices in the same line?
+				'inline' => false,
+			),
+			array(
+				'name' => 'If Other',
+				'id'    => 'bk_medals_type_other',
+				'type' => 'text'
+      ),
+			array(
 				'name' => 'Sponsor',
 				'id'    => 'bk_medals_sponsor',
 				'type' => 'text'
+			),
+			array(
+				'name' => 'Points for First',
+				'id'    => 'bk_medals_pfirst',
+				'type' => 'text'
       ),
+			array(
+				'name' => 'Points for Second',
+				'id'    => 'bk_medals_psecond',
+				'type' => 'text'
+      ),
+			array(
+				'name' => 'Points for Third',
+				'id'    => 'bk_medals_pthird',
+				'type' => 'text'
+	  )
+	  ,
+			array(
+				'name' => 'Points for Fourth',
+				'id'    => 'bk_medals_pfourth',
+				'type' => 'text'
+	  )
+	  ,
+			array(
+				'name' => 'Points for Fifth',
+				'id'    => 'bk_medals_pfifth',
+				'type' => 'text'
+      ),
+	  array(
+		  'name' => 'Points for Sixth',
+		  'id'    => 'bk_medals_psixth',
+		  'type' => 'text'
+	  ),
 			array(
 				'name' => 'First',
 				'id'    => 'bk_medals_first',
@@ -37,7 +91,18 @@ function bk_medals_mb($meta_boxes) {
 				'name' => 'Fourth',
 				'id'    => 'bk_medals_fourth',
 				'type' => 'text'
-      )
+	  )
+	  ,
+			array(
+				'name' => 'Fifth',
+				'id'    => 'bk_medals_fifth',
+				'type' => 'text'
+      ),
+	  array(
+		  'name' => 'Sixth',
+		  'id'    => 'bk_medals_sixth',
+		  'type' => 'text'
+		)
 
 		)
 	);
